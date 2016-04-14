@@ -6,6 +6,7 @@ Window::Window(unsigned int widthInit, unsigned int heightInit, std::string titl
 	: width{widthInit}, height{heightInit}
 {
 	assert(InitializeSDL());
+	assert(InitializeIMG());
 	assert(CreateWindow(title));
 	assert(CreateRenderer());
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -22,6 +23,11 @@ Window::~Window()
 bool Window::InitializeSDL()
 {
 	return (SDL_Init(SDL_INIT_VIDEO) != -1);
+}
+
+bool Window::InitializeIMG()
+{
+	return ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) == IMG_INIT_PNG);
 }
 
 bool Window::CreateWindow(std::string title)

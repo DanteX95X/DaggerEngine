@@ -20,7 +20,7 @@ void Scene::LoadTexture(std::string key, std::string imagePath)
 {
 	std::cout << "Loading sprite\n \tkey: " << key << "\n \tpath: " << imagePath << "\n";
 	SDL_Surface* surface;
-	surface = SDL_LoadBMP(imagePath.c_str());
+	surface = IMG_Load(imagePath.c_str());
 	assert(surface != nullptr);
 
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);

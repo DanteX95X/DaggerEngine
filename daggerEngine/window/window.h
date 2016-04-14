@@ -3,6 +3,7 @@
 
 #include <string>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "scene/scene.h"
 
 class Scene;
@@ -25,6 +26,7 @@ private:
 	Scene* currentScene;
 
 	bool InitializeSDL();
+	bool InitializeIMG();
 	bool CreateWindow(std::string title);
 	bool CreateRenderer();
 };

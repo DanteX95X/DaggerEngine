@@ -5,6 +5,7 @@
 #include "actor/actor.h"
 #include "window/window.h"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <unordered_map>
 #include <assert.h>
 #include <fstream>
