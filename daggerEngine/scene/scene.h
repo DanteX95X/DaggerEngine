@@ -10,11 +10,15 @@
 #include <assert.h>
 #include <fstream>
 
+class Actor;
+
 class Scene
 {
 public:
 	Scene(SDL_Renderer* rendererInit, std::string name);
 	~Scene();
+
+	void RenderScene();
 
 	SDL_Texture* GetTexture(std::string key);
 
@@ -26,7 +30,8 @@ private:
 	std::vector<Actor> actors;
 	std::unordered_map<std::string, SDL_Texture*> textures;
 
-	void LoadTexture(std::string key, std::string imagePath);
+	void CreateTextures();
+	void CreateActors();
 };
 
 #endif // SCENE_H

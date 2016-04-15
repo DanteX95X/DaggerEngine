@@ -5,7 +5,8 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     window/window.cpp \
-    scene/scene.cpp
+    scene/scene.cpp \
+    actor/actor.cpp
 
 
 QMAKE_CXXFLAGS += -std=c++11
