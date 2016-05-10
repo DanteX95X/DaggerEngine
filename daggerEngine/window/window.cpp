@@ -42,7 +42,4 @@ bool Window::CreateRenderer()
 	return renderer != nullptr;
 }
 
-SDL_Renderer* Window::GetRenderer()
-{
-	return renderer;
-}
+SDL_Renderer* Window::GetRenderer() {return renderer;}

@@ -10,15 +10,17 @@ class Scene;
 class Actor
 {
 public:
-	Actor(Scene& parentScene, std::string name, SDL_Rect positionInit);
+	Actor(Scene& parentScene, std::string name, SDL_Rect positionInit, bool isVisibleInit);
 
 	SDL_Texture* GetTexture();
 	SDL_Rect& GetPosition();
+	bool GetIsVisible();
 private:
 	SDL_Texture* texture;
 	SDL_Rect position;
 
 	std::string actorName;
+	bool isVisible;
 };
 
 #endif // ACTOR_H
