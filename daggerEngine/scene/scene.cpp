@@ -5,7 +5,7 @@ Scene::Scene(SDL_Renderer* rendererInit, std::string name)
 	:renderer{rendererInit}, sceneName{name}
 {
 		CreateTextures();
-		CreateActors();
+		//CreateActors();
 }
 
 Scene::~Scene()
@@ -45,16 +45,23 @@ void Scene::CreateActors()
 		Actor newActor(*this, actorName, {posX, posY, posW, posH}, isVisible);
 		actors.push_back(newActor);
 	}
-
 }
 
 
 void Scene::RenderScene()
 {
-	std::cout << "Actors " << actors.size() << "\n";
+	//std::cout << "Actors " << actors.size() << "\n";
 	for(Actor actor : actors)
 		if(actor.GetIsVisible())
-		SDL_RenderCopy(renderer, actor.GetTexture(), nullptr, &actor.GetPosition());
+			SDL_RenderCopy(renderer, actor.GetTexture(), nullptr, &actor.GetPosition());
 }
+
+void Scene::UpdateScene(SDL_Event &event)
+{
+	for(Actor actor : actors)
+		actor.UpdateActor(event);
+}
+
+void Scene::AddActor(Actor& actor) {actors.push_back(actor);}
 
 SDL_Texture* Scene::GetTexture(std::string key) {return textures[key];}

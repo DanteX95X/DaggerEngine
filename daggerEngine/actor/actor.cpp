@@ -12,3 +12,11 @@ SDL_Texture* Actor::GetTexture() {return texture;}
 SDL_Rect& Actor::GetPosition() {return position;}
 
 bool Actor::GetIsVisible() {return isVisible;}
+
+void Actor::UpdateActor(SDL_Event& event)
+{
+	for(Component* component : components)
+		component->UpdateComponent(*this, event);
+}
+
+void Actor::AddComponent(Component* component) {components.push_back(component);}

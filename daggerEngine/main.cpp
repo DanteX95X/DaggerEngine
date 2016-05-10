@@ -1,5 +1,6 @@
 #include "window/window.h"
 #include <iostream>
+#include "component/clickable.h"
 
 using namespace std;
 
@@ -12,10 +13,10 @@ int main()
 	Scene scene(temp.GetRenderer(), "scene");
 	ufo.push_back(scene);
 
-	ufo[0].RenderScene();
-	//SDL_RenderCopy(temp.GetRenderer(), ufo[0].actors[0].GetTexture(), nullptr, nullptr);
-	//SDL_RenderCopy(temp.GetRenderer(), ufo[0].GetTexture("crate"), nullptr, nullptr);
-	SDL_RenderPresent(temp.GetRenderer());
+	Actor newActor(ufo[0], "crate", {0, 0, 100, 100}, true);
+	newActor.AddComponent(new Clickable([]{std::cout << "button clicked\n";}));
+	ufo[0].AddActor(newActor);
+
 
 	while(!isDone)
 	{
@@ -23,7 +24,11 @@ int main()
 		{
 			if(event.type == SDL_QUIT)
 				isDone = true;
+			ufo[0].UpdateScene(event);
 		}
+		ufo[0].RenderScene();
+
+		SDL_RenderPresent(temp.GetRenderer());
 	}
 }
 
