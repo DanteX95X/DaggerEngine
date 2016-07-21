@@ -15,7 +15,7 @@ public:
 	Actor(Scene& parentScene, std::string name, SDL_Rect positionInit, bool isVisibleInit);
 
 	void HandleEvents(SDL_Event& event);
-	void UpdateActor();
+	void Update();
 
 	void AddComponent(Component* component);
 

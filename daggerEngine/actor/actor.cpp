@@ -21,10 +21,10 @@ void Actor::HandleEvents(SDL_Event &event)
 		component->HandleEvents(*this, event);
 }
 
-void Actor::UpdateActor()
+void Actor::Update()
 {
 	for(Component* component : components)
-		component->UpdateComponent(*this);
+		component->Update(*this);
 	std::cout << GetPosition().x << " " << GetPosition().y << "\n";
 }
 

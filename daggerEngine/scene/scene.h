@@ -19,7 +19,7 @@ public:
 	~Scene();
 
 	void HandleEvents(SDL_Event& event);
-	void UpdateScene();
+	void Update();
 	void RenderScene();
 
 	void AddActor(Actor& actor);

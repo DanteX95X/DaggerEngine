@@ -28,7 +28,7 @@ int main()
 				isDone = true;
 			ufo[0].HandleEvents(event);
 		}
-		ufo[0].UpdateScene();
+		ufo[0].Update();
 		SDL_RenderClear(temp.GetRenderer());
 
 		ufo[0].RenderScene();

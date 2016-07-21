@@ -8,7 +8,7 @@ class Component
 {
 public:
 	virtual void HandleEvents(Actor& actor, SDL_Event& event) = 0;
-	virtual void UpdateComponent(Actor& actor) = 0;
+	virtual void Update(Actor& actor) = 0;
 };
 
 #endif // COMPONENT_H

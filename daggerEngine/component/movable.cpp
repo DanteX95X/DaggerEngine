@@ -11,7 +11,7 @@ void Movable::HandleEvents(Actor &actor, SDL_Event &event)
 {
 }
 
-void Movable::UpdateComponent(Actor &actor)
+void Movable::Update(Actor &actor)
 {
 	SDL_Rect currentPosition = actor.GetPosition();
 	currentPosition.x += velocity.x;

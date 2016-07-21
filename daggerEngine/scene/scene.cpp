@@ -65,10 +65,10 @@ void Scene::HandleEvents(SDL_Event &event)
 		actor.HandleEvents(event);
 }
 
-void Scene::UpdateScene()
+void Scene::Update()
 {
 	for(Actor& actor : actors)
-		actor.UpdateActor();
+		actor.Update();
 }
 
 void Scene::AddActor(Actor& actor) {actors.push_back(actor);}

@@ -10,7 +10,7 @@ class Movable : public Component
 public:
 	Movable(SDL_Point velocityInit);
 	void HandleEvents(Actor &actor, SDL_Event &event);
-	void UpdateComponent(Actor& actor);
+	void Update(Actor& actor);
 
 private:
 	SDL_Point velocity;

@@ -19,7 +19,7 @@ void Clickable::HandleEvents(Actor& actor, SDL_Event& event)
 	}
 }
 
-void Clickable::UpdateComponent(Actor &actor)
+void Clickable::Update(Actor &actor)
 {
 
 }
