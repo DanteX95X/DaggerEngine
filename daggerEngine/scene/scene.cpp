@@ -54,7 +54,6 @@ void Scene::RenderScene()
 	for(Actor& actor : actors)
 		if(actor.GetIsVisible())
 		{
-			//std::cout << actor.GetPosition().x << " " << actor.GetPosition().y << '\n';
 			SDL_RenderCopy(renderer, actor.GetTexture(), nullptr, &actor.GetPosition());
 		}
 }

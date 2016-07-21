@@ -2,6 +2,7 @@
 #include <iostream>
 #include "component/clickable.h"
 #include "component/movable.h"
+#include "timer/timer.h"
 
 using namespace std;
 
@@ -16,18 +17,20 @@ int main()
 
 	Actor newActor(ufo[0], "crate", {0, 0, 100, 100}, true);
 	newActor.AddComponent(new Clickable([]{std::cout << "button clicked\n";}));
-	newActor.AddComponent(new Movable({1,1}));
+	newActor.AddComponent(new Movable({100,100}));
 	ufo[0].AddActor(newActor);
 
 
 	while(!isDone)
 	{
+		SDL_Delay(10);
 		while(SDL_PollEvent(&event))
 		{
 			if(event.type == SDL_QUIT)
 				isDone = true;
 			ufo[0].HandleEvents(event);
 		}
+		Timer::Instance().Update();
 		ufo[0].Update();
 		SDL_RenderClear(temp.GetRenderer());
 

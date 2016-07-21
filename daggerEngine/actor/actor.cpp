@@ -25,7 +25,6 @@ void Actor::Update()
 {
 	for(Component* component : components)
 		component->Update(*this);
-	std::cout << GetPosition().x << " " << GetPosition().y << "\n";
 }
 
 void Actor::AddComponent(Component* component) {components.push_back(component);}

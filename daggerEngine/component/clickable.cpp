@@ -21,5 +21,5 @@ void Clickable::HandleEvents(Actor& actor, SDL_Event& event)
 
 void Clickable::Update(Actor &actor)
 {
-
+	(void)actor;
 }
