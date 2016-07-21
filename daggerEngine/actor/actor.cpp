@@ -1,4 +1,5 @@
 #include "actor.h"
+#include <iostream>
 
 Actor::Actor(Scene& parentScene, std::string name, SDL_Rect positionInit, bool isVisibleInit)
 	:position{positionInit.x, positionInit.y, positionInit.w, positionInit.h}, actorName{name}, isVisible{isVisibleInit}
@@ -10,13 +11,21 @@ Actor::Actor(Scene& parentScene, std::string name, SDL_Rect positionInit, bool i
 SDL_Texture* Actor::GetTexture() {return texture;}
 
 SDL_Rect& Actor::GetPosition() {return position;}
+void Actor::SetPosition(SDL_Rect newPosition) {position = newPosition;}
 
 bool Actor::GetIsVisible() {return isVisible;}
 
-void Actor::UpdateActor(SDL_Event& event)
+void Actor::HandleEvents(SDL_Event &event)
 {
 	for(Component* component : components)
-		component->UpdateComponent(*this, event);
+		component->HandleEvents(*this, event);
+}
+
+void Actor::UpdateActor()
+{
+	for(Component* component : components)
+		component->UpdateComponent(*this);
+	std::cout << GetPosition().x << " " << GetPosition().y << "\n";
 }
 
 void Actor::AddComponent(Component* component) {components.push_back(component);}

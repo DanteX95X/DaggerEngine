@@ -8,7 +8,8 @@ class Clickable : public Component
 {
 public:
 	Clickable(std::function<void()> functionInit);
-	void UpdateComponent(Actor& actor, SDL_Event& event);
+	void HandleEvents(Actor& actor, SDL_Event& event);
+	void UpdateComponent(Actor& actor);
 
 private:
 	std::function<void()> function;

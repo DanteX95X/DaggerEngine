@@ -14,12 +14,16 @@ class Actor
 public:
 	Actor(Scene& parentScene, std::string name, SDL_Rect positionInit, bool isVisibleInit);
 
-	void UpdateActor(SDL_Event& event);
+	void HandleEvents(SDL_Event& event);
+	void UpdateActor();
 
 	void AddComponent(Component* component);
 
 	SDL_Texture* GetTexture();
+
 	SDL_Rect& GetPosition();
+	void SetPosition(SDL_Rect newPosition);
+
 	bool GetIsVisible();
 private:
 	SDL_Texture* texture;

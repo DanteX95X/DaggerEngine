@@ -6,7 +6,7 @@ Clickable::Clickable(std::function<void()> functionInit)
 {
 }
 
-void Clickable::UpdateComponent(Actor& actor, SDL_Event& event)
+void Clickable::HandleEvents(Actor& actor, SDL_Event& event)
 {
 	if(event.type == SDL_MOUSEBUTTONDOWN)
 	{
@@ -17,4 +17,9 @@ void Clickable::UpdateComponent(Actor& actor, SDL_Event& event)
 		if(x > position.x && x < position.x + position.w && y > position.y && y < position.y + position.h)
 			function();
 	}
+}
+
+void Clickable::UpdateComponent(Actor &actor)
+{
+
 }

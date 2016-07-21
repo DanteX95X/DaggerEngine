@@ -7,7 +7,8 @@ SOURCES += main.cpp \
     window/window.cpp \
     scene/scene.cpp \
     actor/actor.cpp \
-    component/clickable.cpp
+    component/clickable.cpp \
+    component/movable.cpp
 
 
 QMAKE_CXXFLAGS += -std=c++11
@@ -20,5 +21,6 @@ HEADERS += \
     scene/scene.h \
     state/state.h \
     component/component.h \
-    component/clickable.h
+    component/clickable.h \
+    component/movable.h
 

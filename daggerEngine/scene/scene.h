@@ -18,7 +18,8 @@ public:
 	Scene(SDL_Renderer* rendererInit, std::string name);
 	~Scene();
 
-	void UpdateScene(SDL_Event& event);
+	void HandleEvents(SDL_Event& event);
+	void UpdateScene();
 	void RenderScene();
 
 	void AddActor(Actor& actor);

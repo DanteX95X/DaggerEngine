@@ -51,15 +51,24 @@ void Scene::CreateActors()
 void Scene::RenderScene()
 {
 	//std::cout << "Actors " << actors.size() << "\n";
-	for(Actor actor : actors)
+	for(Actor& actor : actors)
 		if(actor.GetIsVisible())
+		{
+			//std::cout << actor.GetPosition().x << " " << actor.GetPosition().y << '\n';
 			SDL_RenderCopy(renderer, actor.GetTexture(), nullptr, &actor.GetPosition());
+		}
 }
 
-void Scene::UpdateScene(SDL_Event &event)
+void Scene::HandleEvents(SDL_Event &event)
 {
-	for(Actor actor : actors)
-		actor.UpdateActor(event);
+	for(Actor& actor : actors)
+		actor.HandleEvents(event);
+}
+
+void Scene::UpdateScene()
+{
+	for(Actor& actor : actors)
+		actor.UpdateActor();
 }
 
 void Scene::AddActor(Actor& actor) {actors.push_back(actor);}
