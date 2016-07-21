@@ -38,11 +38,11 @@ void Scene::CreateActors()
 {
 	std::ifstream actorsList("scenes/" + sceneName + "_actors");
 	std::string actorName;
-	int posX, posY, posW, posH;
+	double posX, posY, posW, posH;
 	bool isVisible;
 	while(actorsList >> actorName >> posX >> posY >> posW >> posH >> isVisible)
 	{
-		Actor newActor(*this, actorName, {posX, posY, posW, posH}, isVisible);
+		Actor newActor(*this, actorName, {posX, posY}, {posW, posH}, isVisible);
 		actors.push_back(newActor);
 	}
 }
@@ -54,7 +54,8 @@ void Scene::RenderScene()
 	for(Actor& actor : actors)
 		if(actor.GetIsVisible())
 		{
-			SDL_RenderCopy(renderer, actor.GetTexture(), nullptr, &actor.GetPosition());
+			SDL_Rect destinationRectangle = { static_cast<int>(actor.GetPosition().x), static_cast<int>(actor.GetPosition().y), static_cast<int>(actor.GetSize().x), static_cast<int>(actor.GetSize().y)};
+			SDL_RenderCopy(renderer, actor.GetTexture(), nullptr, &destinationRectangle);
 		}
 }
 

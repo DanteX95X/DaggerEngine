@@ -9,7 +9,9 @@ Timer::Timer()
 void Timer::Update()
 {
 	++currentFrames;
+
 	deltaTime = std::chrono::duration_cast<std::chrono::nanoseconds>(Clock::now() - currentTime).count()/1000000000.0;
+
 	currentTime = Clock::now();
 	secondCounter += deltaTime;
 	if(secondCounter >= 1)
@@ -18,7 +20,7 @@ void Timer::Update()
 		fps = currentFrames;
 		currentFrames = 0;
 	}
-	std::cout << GetTime() << '\n';
+	std::cout << fps << '\n';
 }
 
 Timer& Timer::Instance()

@@ -15,7 +15,7 @@ void Movable::HandleEvents(Actor &actor, SDL_Event &event)
 
 void Movable::Update(Actor &actor)
 {
-	SDL_Rect currentPosition = actor.GetPosition();
+	Vector2 currentPosition = actor.GetPosition();
 	currentPosition.x += velocity.x * Timer::GetDeltaTime();
 	currentPosition.y += velocity.y * Timer::GetDeltaTime();
 	actor.SetPosition(currentPosition);

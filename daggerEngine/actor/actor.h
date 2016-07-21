@@ -5,6 +5,7 @@
 #include <string>
 #include "scene/scene.h"
 #include "component/component.h"
+#include "utilities/vector2.h"
 
 class Scene;
 class Component;
@@ -12,7 +13,7 @@ class Component;
 class Actor
 {
 public:
-	Actor(Scene& parentScene, std::string name, SDL_Rect positionInit, bool isVisibleInit);
+	Actor(Scene& parentScene, std::string name, Vector2 positionInit, Vector2 sizeInit, bool isVisibleInit);
 
 	void HandleEvents(SDL_Event& event);
 	void Update();
@@ -21,13 +22,17 @@ public:
 
 	SDL_Texture* GetTexture();
 
-	SDL_Rect& GetPosition();
-	void SetPosition(SDL_Rect newPosition);
+	Vector2& GetPosition();
+	Vector2& GetSize();
+
+	void SetPosition(Vector2 newPosition);
 
 	bool GetIsVisible();
 private:
 	SDL_Texture* texture;
-	SDL_Rect position;
+	//SDL_Rect position;
+	Vector2 position;
+	Vector2 size;
 
 	std::vector<Component*> components;
 

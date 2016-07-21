@@ -9,7 +9,8 @@ SOURCES += main.cpp \
     actor/actor.cpp \
     component/clickable.cpp \
     component/movable.cpp \
-    timer/timer.cpp
+    timer/timer.cpp \
+    utilities/vector2.cpp
 
 
 QMAKE_CXXFLAGS += -std=c++11
@@ -24,5 +25,6 @@ HEADERS += \
     component/component.h \
     component/clickable.h \
     component/movable.h \
-    timer/timer.h
+    timer/timer.h \
+    utilities/vector2.h
 

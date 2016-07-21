@@ -15,15 +15,14 @@ int main()
 	Scene scene(temp.GetRenderer(), "scene");
 	ufo.push_back(scene);
 
-	Actor newActor(ufo[0], "crate", {0, 0, 100, 100}, true);
+	Actor newActor(ufo[0], "crate", {0, 0}, {100, 100}, true);
 	newActor.AddComponent(new Clickable([]{std::cout << "button clicked\n";}));
-	newActor.AddComponent(new Movable({100,100}));
+	newActor.AddComponent(new Movable({100, 0}));
 	ufo[0].AddActor(newActor);
 
 
 	while(!isDone)
 	{
-		SDL_Delay(10);
 		while(SDL_PollEvent(&event))
 		{
 			if(event.type == SDL_QUIT)

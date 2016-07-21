@@ -12,9 +12,10 @@ void Clickable::HandleEvents(Actor& actor, SDL_Event& event)
 	{
 		int x,y;
 		SDL_GetMouseState(&x, &y);
-		SDL_Rect position = actor.GetPosition();
+		Vector2 position = actor.GetPosition();
+		Vector2 size = actor.GetSize();
 
-		if(x > position.x && x < position.x + position.w && y > position.y && y < position.y + position.h)
+		if(x > position.x && x < position.x + size.x && y > position.y && y < position.y + size.y)
 			function();
 	}
 }
