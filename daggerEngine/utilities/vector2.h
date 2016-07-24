@@ -8,11 +8,14 @@ public:
 
 	Vector2& operator += (const Vector2& vector);
 	Vector2& operator -= (const Vector2& vector);
+	Vector2& operator *= (const double coefficient);
 	Vector2& operator = (const Vector2& vector);
 
 	friend Vector2 operator - (const Vector2& vector);
 	friend Vector2 operator - (const Vector2& first, const Vector2& second);
 	friend Vector2 operator + (const Vector2& first, const Vector2& second);
+	friend Vector2 operator * (const Vector2& vector, const double coefficient);
+	friend Vector2 operator * (const double coefficient, const Vector2& vector);
 
 	friend bool operator == (const Vector2& first, const Vector2& second);
 	friend bool operator != (const Vector2& first, const Vector2& second);

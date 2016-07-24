@@ -18,6 +18,13 @@ Vector2& Vector2::operator -= (const Vector2& vector)
 	return *this += -vector;
 }
 
+Vector2& Vector2::operator *= (const double coefficient)
+{
+	x *= coefficient;
+	y *= coefficient;
+	return *this;
+}
+
 Vector2& Vector2::operator = (const Vector2& vector)
 {
 	x = vector.x;
@@ -38,6 +45,16 @@ Vector2 operator + (const Vector2& first, const Vector2& second)
 Vector2 operator - (const Vector2& first, const Vector2& second)
 {
 	return Vector2(first.x - second.x, first.y - second.y);
+}
+
+Vector2 operator * (const Vector2& vector, const double coefficient)
+{
+	return Vector2(vector.x * coefficient, vector.y * coefficient);
+}
+
+Vector2 operator * (const double coefficient, const Vector2& vector)
+{
+	return vector * coefficient;
 }
 
 
