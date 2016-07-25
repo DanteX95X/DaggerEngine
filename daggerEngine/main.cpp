@@ -20,7 +20,6 @@ int main()
 	newActor.AddComponent(new Movable({100, 0}));
 	ufo[0].AddActor(newActor);
 
-
 	while(!isDone)
 	{
 		while(SDL_PollEvent(&event))
