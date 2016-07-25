@@ -11,6 +11,7 @@ public:
 	Movable(Vector2 velocityInit);
 	void HandleEvents(Actor &actor, SDL_Event &event);
 	void Update(Actor& actor);
+	Component* Clone() override;
 
 private:
 	Vector2 velocity;

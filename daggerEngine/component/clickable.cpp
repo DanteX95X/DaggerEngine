@@ -6,6 +6,11 @@ Clickable::Clickable(std::function<void()> functionInit)
 {
 }
 
+Component* Clickable::Clone()
+{
+	return new Clickable(*this);
+}
+
 void Clickable::HandleEvents(Actor& actor, SDL_Event& event)
 {
 	if(event.type == SDL_MOUSEBUTTONDOWN)

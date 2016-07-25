@@ -7,8 +7,11 @@ class Actor;
 class Component
 {
 public:
+	virtual ~Component(){};
+
 	virtual void HandleEvents(Actor& actor, SDL_Event& event) = 0;
 	virtual void Update(Actor& actor) = 0;
+	virtual Component* Clone() = 0;
 };
 
 #endif // COMPONENT_H

@@ -20,7 +20,7 @@ void Timer::Update()
 		fps = currentFrames;
 		currentFrames = 0;
 	}
-	std::cout << fps << '\n';
+	//std::cout << fps << '\n';
 }
 
 Timer& Timer::Instance()

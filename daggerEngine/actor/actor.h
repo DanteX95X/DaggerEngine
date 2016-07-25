@@ -14,6 +14,8 @@ class Actor
 {
 public:
 	Actor(Scene& parentScene, std::string name, Vector2 positionInit, Vector2 sizeInit, bool isVisibleInit);
+	Actor(const Actor& actor);
+	~Actor();
 
 	void HandleEvents(SDL_Event& event);
 	void Update();

@@ -10,6 +10,7 @@ public:
 	Clickable(std::function<void()> functionInit);
 	void HandleEvents(Actor& actor, SDL_Event& event);
 	void Update(Actor& actor);
+	Component* Clone() override;
 
 private:
 	std::function<void()> function;

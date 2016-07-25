@@ -18,6 +18,7 @@ int main()
 	Actor newActor(ufo[0], "crate", {0, 0}, {100, 100}, true);
 	newActor.AddComponent(new Clickable([]{std::cout << "button clicked\n";}));
 	newActor.AddComponent(new Movable({100, 0}));
+
 	ufo[0].AddActor(newActor);
 
 	while(!isDone)
@@ -29,6 +30,10 @@ int main()
 			ufo[0].HandleEvents(event);
 		}
 		Timer::Instance().Update();
+
+		if(Timer::GetTime() >= 5)
+			isDone = true;
+
 		ufo[0].Update();
 		SDL_RenderClear(temp.GetRenderer());
 

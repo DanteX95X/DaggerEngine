@@ -8,6 +8,11 @@ Movable::Movable(Vector2 velocityInit)
 
 }
 
+Component* Movable::Clone()
+{
+	return new Movable(*this);
+}
+
 void Movable::HandleEvents(Actor &actor, SDL_Event &event)
 {
 	(void)actor; (void)event;
@@ -17,7 +22,5 @@ void Movable::Update(Actor &actor)
 {
 	Vector2 currentPosition = actor.GetPosition();
 	currentPosition += velocity * Timer::GetDeltaTime();
-	//currentPosition.x += velocity.x * Timer::GetDeltaTime();
-	//currentPosition.y += velocity.y * Timer::GetDeltaTime();
 	actor.SetPosition(currentPosition);
 }
