@@ -7,10 +7,10 @@ class Actor;
 class Component
 {
 public:
-	virtual ~Component(){};
+	virtual ~Component() {};
 
-	virtual void HandleEvents(Actor& actor, SDL_Event& event) = 0;
-	virtual void Update(Actor& actor) = 0;
+	virtual void HandleEvents(Actor& actor, SDL_Event& event) { (void)actor; (void)event; }
+	virtual void Update(Actor& actor) { (void)actor; }
 	virtual Component* Clone() = 0;
 };
 

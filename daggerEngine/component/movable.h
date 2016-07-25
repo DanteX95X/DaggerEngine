@@ -9,8 +9,7 @@ class Movable : public Component
 {
 public:
 	Movable(Vector2 velocityInit);
-	void HandleEvents(Actor &actor, SDL_Event &event);
-	void Update(Actor& actor);
+	void Update(Actor& actor) override;
 	Component* Clone() override;
 
 private:

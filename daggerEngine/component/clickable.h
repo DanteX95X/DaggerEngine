@@ -8,8 +8,7 @@ class Clickable : public Component
 {
 public:
 	Clickable(std::function<void()> functionInit);
-	void HandleEvents(Actor& actor, SDL_Event& event);
-	void Update(Actor& actor);
+	void HandleEvents(Actor& actor, SDL_Event& event) override;
 	Component* Clone() override;
 
 private:

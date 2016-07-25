@@ -24,8 +24,3 @@ void Clickable::HandleEvents(Actor& actor, SDL_Event& event)
 			function();
 	}
 }
-
-void Clickable::Update(Actor &actor)
-{
-	(void)actor;
-}
