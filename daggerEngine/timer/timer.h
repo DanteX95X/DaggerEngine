@@ -1,8 +1,6 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-
-//High precision clock has potential to ruin framerate
 #include <chrono>
 #include <SDL2/SDL.h>
 typedef std::chrono::high_resolution_clock Clock;

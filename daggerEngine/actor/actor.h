@@ -13,23 +13,27 @@ class Component;
 class Actor
 {
 public:
-	Actor(Scene& parentScene, std::string name, Vector2 positionInit, Vector2 sizeInit, bool isVisibleInit);
+	Actor(Scene& parentScene, std::string name, Vector2 positionInit, Vector2 sizeInit, bool isVisibleInit, bool isCollidableInit);
 	Actor(const Actor& actor);
 	~Actor();
 
 	void HandleEvents(SDL_Event& event);
 	void Update();
+	void HandleCollision(Actor& collider);
 
 	void AddComponent(Component* component);
 
 	SDL_Texture* GetTexture();
 
-	Vector2& GetPosition();
-	Vector2& GetSize();
+	Vector2 GetPosition();
+	Vector2 GetSize();
 
 	void SetPosition(Vector2 newPosition);
 
 	bool GetIsVisible();
+	void SetIsVisible(bool isVisible);
+	bool GetIsCollidable();
+	void SetIsCollidable(bool isCollidable);
 private:
 	SDL_Texture* texture;
 	//SDL_Rect position;
@@ -40,6 +44,7 @@ private:
 
 	std::string actorName;
 	bool isVisible;
+	bool isCollidable;
 };
 
 #endif // ACTOR_H

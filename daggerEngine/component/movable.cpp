@@ -19,3 +19,9 @@ void Movable::Update(Actor &actor)
 	currentPosition += velocity * Timer::GetDeltaTime();
 	actor.SetPosition(currentPosition);
 }
+
+void Movable::HandleCollision(Actor& collider)
+{
+	collider.SetIsVisible(false);
+	collider.SetIsCollidable(false);
+}

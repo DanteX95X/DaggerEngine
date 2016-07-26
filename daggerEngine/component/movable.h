@@ -10,6 +10,7 @@ class Movable : public Component
 public:
 	Movable(Vector2 velocityInit);
 	void Update(Actor& actor) override;
+	void HandleCollision(Actor& collider) override;
 	Component* Clone() override;
 
 private:

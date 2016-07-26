@@ -11,6 +11,7 @@ public:
 
 	virtual void HandleEvents(Actor& actor, SDL_Event& event) { (void)actor; (void)event; }
 	virtual void Update(Actor& actor) { (void)actor; }
+	virtual void HandleCollision(Actor& collider) { (void)collider; }
 	virtual Component* Clone() = 0;
 };
 

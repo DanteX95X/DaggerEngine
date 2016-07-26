@@ -1,5 +1,6 @@
 #include "scene.h"
 #include <iostream>
+#include "utilities/collisionDetection.h"
 
 Scene::Scene(SDL_Renderer* rendererInit, std::string name)
 	:renderer{rendererInit}, sceneName{name}
@@ -34,18 +35,18 @@ void Scene::CreateTextures()
 	}
 }
 
-void Scene::CreateActors()
-{
-	std::ifstream actorsList("scenes/" + sceneName + "_actors");
-	std::string actorName;
-	double posX, posY, posW, posH;
-	bool isVisible;
-	while(actorsList >> actorName >> posX >> posY >> posW >> posH >> isVisible)
-	{
-		Actor newActor(*this, actorName, {posX, posY}, {posW, posH}, isVisible);
-		actors.push_back(newActor);
-	}
-}
+//void Scene::CreateActors()
+//{
+//	std::ifstream actorsList("scenes/" + sceneName + "_actors");
+//	std::string actorName;
+//	double posX, posY, posW, posH;
+//	bool isVisible;
+//	while(actorsList >> actorName >> posX >> posY >> posW >> posH >> isVisible )
+//	{
+//		Actor newActor(*this, actorName, {posX, posY}, {posW, posH}, isVisible);
+//		actors.push_back(newActor);
+//	}
+//}
 
 
 void Scene::RenderScene()
@@ -69,6 +70,14 @@ void Scene::Update()
 {
 	for(Actor& actor : actors)
 		actor.Update();
+
+	for(std::size_t firstIterator = 0; firstIterator < actors.size(); ++firstIterator)
+		for(std::size_t secondIterator = firstIterator + 1; secondIterator < actors.size(); ++secondIterator)
+			if(actors[firstIterator].GetIsCollidable() && actors[secondIterator].GetIsCollidable() && CollisionDetection::BoundingRectangle(actors[firstIterator], actors[secondIterator]))
+			{
+				actors[firstIterator].HandleCollision(actors[secondIterator]);
+				actors[secondIterator].HandleCollision(actors[firstIterator]);
+			}
 }
 
 void Scene::AddActor(Actor& actor) {actors.push_back(actor);}
