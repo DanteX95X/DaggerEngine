@@ -31,6 +31,13 @@ int main()
 		{
 			if(event.type == SDL_QUIT)
 				isDone = true;
+			if(event.type == SDL_KEYDOWN)
+				if(event.key.keysym.sym == SDLK_RETURN)
+				{
+					temp.SetUpWindow(800, 600, "new window");
+					for(Scene& scene : ufo)
+						scene.ReloadScene(temp.GetRenderer());
+				}
 			ufo[0].HandleEvents(event);
 		}
 		Timer::Instance().Update();

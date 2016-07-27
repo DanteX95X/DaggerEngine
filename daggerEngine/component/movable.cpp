@@ -22,6 +22,7 @@ void Movable::Update(Actor &actor)
 
 void Movable::HandleCollision(Actor& collider)
 {
+	(void) collider;
 	//collider.SetIsVisible(false);
 	//collider.SetIsCollidable(false);
 }

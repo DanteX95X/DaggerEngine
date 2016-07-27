@@ -11,12 +11,12 @@ Scene::Scene(SDL_Renderer* rendererInit, std::string name)
 
 Scene::~Scene()
 {
-	for(std::pair<std::string, SDL_Texture*> pair : textures)
-		SDL_DestroyTexture(pair.second);
+	DestroyTextures();
 }
 
 void Scene::CreateTextures()
 {
+	textures.clear();
 	std::ifstream spriteList("scenes/" + sceneName + "_sprites");
 	std::cout << "scenes/" + sceneName + "_sprites\n\n";
 	std::string key, imagePath;
@@ -33,6 +33,12 @@ void Scene::CreateTextures()
 
 		textures[key] = texture;
 	}
+}
+
+void Scene::DestroyTextures()
+{
+	for(std::pair<std::string, SDL_Texture*> pair : textures)
+		SDL_DestroyTexture(pair.second);
 }
 
 //void Scene::CreateActors()
@@ -82,4 +88,16 @@ void Scene::Update()
 
 void Scene::AddActor(Actor& actor) {actors.push_back(actor);}
 
-SDL_Texture* Scene::GetTexture(std::string key) {return textures[key];}
+void Scene::ReloadScene(SDL_Renderer* renderer)
+{
+	this->renderer = renderer;
+	DestroyTextures();
+	CreateTextures();
+	for(Actor& actor : actors)
+		actor.LoadTexture(*this);
+}
+
+SDL_Texture* Scene::GetTexture(std::string key)
+{
+	return textures[key];
+}

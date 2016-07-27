@@ -24,6 +24,7 @@ public:
 
 	void AddActor(Actor& actor);
 
+	void ReloadScene(SDL_Renderer* renderer);
 	SDL_Texture* GetTexture(std::string key);
 
 private:
@@ -35,6 +36,7 @@ private:
 	std::unordered_map<std::string, SDL_Texture*> textures;
 
 	void CreateTextures();
+	void DestroyTextures();
 	void CreateActors();
 };
 

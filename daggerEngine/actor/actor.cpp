@@ -4,7 +4,7 @@
 Actor::Actor(Scene& parentScene, std::string name, Vector2 positionInit, Vector2 sizeInit, bool isVisibleInit, bool isCollidableInit)
 	:position{positionInit.x, positionInit.y}, size{sizeInit.x, sizeInit.y}, actorName{name}, isVisible{isVisibleInit}, isCollidable{isCollidableInit}
 {
-	texture = parentScene.GetTexture(actorName);
+	LoadTexture(parentScene);
 	assert(texture != nullptr);
 }
 
@@ -19,6 +19,11 @@ Actor::~Actor()
 {
 	for(std::size_t i = 0; i < components.size(); ++i)
 		delete components[i];
+}
+
+void Actor::LoadTexture(Scene& currentScene)
+{
+	texture = currentScene.GetTexture(actorName);
 }
 
 SDL_Texture* Actor::GetTexture() { return texture; }

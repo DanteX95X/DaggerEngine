@@ -14,7 +14,10 @@ public:
 	Window(unsigned int widthInit = 640, unsigned int heightInit = 480, std::string title = "");
 	~Window();
 
+	void SetUpWindow(unsigned int width, unsigned int height, std::string title, Uint32 flags = SDL_WINDOW_SHOWN);
+
 	SDL_Renderer* GetRenderer();
+
 private:
 	unsigned int width;
 	unsigned int height;
@@ -27,7 +30,7 @@ private:
 
 	bool InitializeSDL();
 	bool InitializeIMG();
-	bool CreateWindow(std::string title);
+	bool CreateWindow(unsigned int width, unsigned int height, std::string title, Uint32 flags);
 	bool CreateRenderer();
 };
 

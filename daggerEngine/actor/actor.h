@@ -24,6 +24,7 @@ public:
 	void AddComponent(Component* component);
 
 	SDL_Texture* GetTexture();
+	void LoadTexture(Scene& currentScene);
 
 	Vector2 GetPosition();
 	Vector2 GetSize();
