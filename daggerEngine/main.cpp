@@ -22,6 +22,7 @@ int main()
 
 	newActor = Actor(ufo[0], "crate", {540, 0}, {100, 100}, true, true);
 	newActor.AddComponent(new Movable({-100, 0}));
+	//for(int i=0; i < 100; ++i)
 	ufo[0].AddActor(newActor);
 
 	while(!isDone)

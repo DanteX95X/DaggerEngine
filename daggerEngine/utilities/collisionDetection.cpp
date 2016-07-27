@@ -2,9 +2,14 @@
 
 bool CollisionDetection::BoundingRectangle(Actor& first, Actor& second)
 {
+	Vector2 firstPosition = first.GetPosition();
+	Vector2 firstSize = first.GetSize();
+	Vector2 secondPosition = second.GetPosition();
+	Vector2 secondSize = second.GetSize();
+
 	return
-		first.GetPosition().x < second.GetPosition().x + second.GetSize().x
-		&& first.GetPosition().x + first.GetSize().x > second.GetPosition().x
-		&& first.GetPosition().y < second.GetPosition().y + second.GetSize().y
-		&& first.GetPosition().y + first.GetSize().y > second.GetPosition().y;
+		firstPosition.x < secondPosition.x + secondSize.x
+		&& firstPosition.x + firstSize.x > secondPosition.x
+		&& firstPosition.y < secondPosition.y + secondSize.y
+		&& firstPosition.y + firstSize.y > secondPosition.y;
 }
