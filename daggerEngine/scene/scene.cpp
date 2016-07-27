@@ -1,9 +1,10 @@
 #include "scene.h"
 #include <iostream>
 #include "utilities/collisionDetection.h"
+#include "timer/timer.h"
 
-Scene::Scene(SDL_Renderer* rendererInit, std::string name)
-	:renderer{rendererInit}, sceneName{name}
+Scene::Scene(Window& window, std::string name, Vector2 cameraPositionInit)
+	:renderer{window.GetRenderer()}, sceneName{name}, cameraPosition{cameraPositionInit}, cameraSize{static_cast<double>(window.GetWidth()), static_cast<double>(window.GetHeight())}
 {
 		CreateTextures();
 		//CreateActors();
@@ -61,7 +62,7 @@ void Scene::RenderScene()
 	for(Actor& actor : actors)
 		if(actor.GetIsVisible())
 		{
-			SDL_Rect destinationRectangle = { static_cast<int>(actor.GetPosition().x), static_cast<int>(actor.GetPosition().y), static_cast<int>(actor.GetSize().x), static_cast<int>(actor.GetSize().y)};
+			SDL_Rect destinationRectangle = { static_cast<int>(actor.GetPosition().x - cameraPosition.x), static_cast<int>(actor.GetPosition().y - cameraPosition.y), static_cast<int>(actor.GetSize().x), static_cast<int>(actor.GetSize().y)};
 			SDL_RenderCopy(renderer, actor.GetTexture(), nullptr, &destinationRectangle);
 		}
 }
@@ -71,7 +72,6 @@ void Scene::HandleEvents(SDL_Event &event)
 	for(Actor& actor : actors)
 		actor.HandleEvents(event);
 }
-
 void Scene::Update()
 {
 	for(Actor& actor : actors)

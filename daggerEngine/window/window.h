@@ -18,6 +18,9 @@ public:
 
 	SDL_Renderer* GetRenderer();
 
+	unsigned int GetWidth();
+	unsigned int GetHeight();
+
 private:
 	unsigned int width;
 	unsigned int height;

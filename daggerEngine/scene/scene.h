@@ -9,13 +9,15 @@
 #include <unordered_map>
 #include <assert.h>
 #include <fstream>
+#include "utilities/vector2.h"
 
+class Window;
 class Actor;
 
 class Scene
 {
 public:
-	Scene(SDL_Renderer* rendererInit, std::string name);
+	Scene(Window& window, std::string name, Vector2 cameraPositionInit = {0,0});
 	~Scene();
 
 	void HandleEvents(SDL_Event& event);
@@ -34,6 +36,9 @@ private:
 
 	std::vector<Actor> actors;
 	std::unordered_map<std::string, SDL_Texture*> textures;
+
+	Vector2	cameraPosition;
+	Vector2 cameraSize;
 
 	void CreateTextures();
 	void DestroyTextures();

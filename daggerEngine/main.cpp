@@ -12,7 +12,7 @@ int main()
 	SDL_Event event;
 	Window temp;
 	std::vector<Scene> ufo;
-	Scene scene(temp.GetRenderer(), "scene");
+	Scene scene(temp, "scene", {100,0});
 	ufo.push_back(scene);
 
 	Actor newActor(ufo[0], "crate", {0, 0}, {100, 100}, true, true);
