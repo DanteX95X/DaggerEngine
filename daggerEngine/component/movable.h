@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include "movable.h"
 #include "component.h"
+#include <iostream>
 
 class Movable : public Component
 {
@@ -13,6 +14,7 @@ public:
 	void HandleCollision(Actor& collider) override;
 	Component* Clone() override;
 
+	void ufoporno() { std::cout << "ufoporno\n"; }
 private:
 	Vector2 velocity;
 };

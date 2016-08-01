@@ -4,6 +4,14 @@
 #include "actor/actor.h"
 class Actor;
 
+
+enum class ComponentType
+{
+	CLICKABLE,
+	MOVABLE,
+};
+
+
 class Component
 {
 public:
@@ -13,6 +21,11 @@ public:
 	virtual void Update(Actor& actor) { (void)actor; }
 	virtual void HandleCollision(Actor& collider) { (void)collider; }
 	virtual Component* Clone() = 0;
+
+	ComponentType GetType() { return type; }
+
+protected:
+	ComponentType type;
 };
 
 #endif // COMPONENT_H

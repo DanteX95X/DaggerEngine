@@ -59,3 +59,4 @@ void Window::SetUpWindow(unsigned int width, unsigned int height, std::string ti
 SDL_Renderer* Window::GetRenderer() { return renderer; }
 unsigned int Window::GetWidth() { return width; }
 unsigned int Window::GetHeight() { return height; }
+SDL_Window* Window::GetWindow() { return window; }

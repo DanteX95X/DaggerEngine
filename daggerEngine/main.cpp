@@ -12,7 +12,7 @@ int main()
 	SDL_Event event;
 	Window temp;
 	std::vector<Scene> ufo;
-	Scene scene(temp, "scene", {100,0});
+	Scene scene(temp, "scene", {0,0});
 	ufo.push_back(scene);
 
 	Actor newActor(ufo[0], "crate", {0, 0}, {100, 100}, true, true);
@@ -22,8 +22,11 @@ int main()
 
 	newActor = Actor(ufo[0], "crate", {540, 0}, {100, 100}, true, true);
 	newActor.AddComponent(new Movable({-100, 0}));
-	//for(int i=0; i < 100; ++i)
 	ufo[0].AddActor(newActor);
+
+	SDL_DisplayMode dm;
+	SDL_GetCurrentDisplayMode(0, &dm);
+	std::cout << dm.w << " " << dm.h << '\n';
 
 	while(!isDone)
 	{
@@ -34,9 +37,10 @@ int main()
 			if(event.type == SDL_KEYDOWN)
 				if(event.key.keysym.sym == SDLK_RETURN)
 				{
-					temp.SetUpWindow(800, 600, "new window");
+					temp.SetUpWindow(dm.w, dm.h, "new window");
 					for(Scene& scene : ufo)
 						scene.ReloadScene(temp.GetRenderer());
+					SDL_SetWindowFullscreen(temp.GetWindow(), SDL_WINDOW_FULLSCREEN);
 				}
 			ufo[0].HandleEvents(event);
 		}

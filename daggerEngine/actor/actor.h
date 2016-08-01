@@ -9,6 +9,7 @@
 
 class Scene;
 class Component;
+enum class ComponentType;
 
 class Actor
 {
@@ -35,6 +36,8 @@ public:
 	void SetIsVisible(bool isVisible);
 	bool GetIsCollidable();
 	void SetIsCollidable(bool isCollidable);
+
+	Component* GetComponent(ComponentType type);
 private:
 	SDL_Texture* texture;
 	//SDL_Rect position;

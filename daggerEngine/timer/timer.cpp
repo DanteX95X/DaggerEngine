@@ -8,6 +8,7 @@ Timer::Timer()
 
 void Timer::Update()
 {
+
 	++currentFrames;
 
 	deltaTime = std::chrono::duration_cast<std::chrono::nanoseconds>(Clock::now() - currentTime).count()/1000000000.0;

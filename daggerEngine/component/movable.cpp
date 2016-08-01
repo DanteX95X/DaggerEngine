@@ -5,7 +5,7 @@
 Movable::Movable(Vector2 velocityInit)
 	: velocity{velocityInit.x, velocityInit.y}
 {
-
+	type = ComponentType::MOVABLE;
 }
 
 Component* Movable::Clone()

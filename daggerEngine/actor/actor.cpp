@@ -56,3 +56,13 @@ void Actor::HandleCollision(Actor& collider)
 }
 
 void Actor::AddComponent(Component* component) {components.push_back(component);}
+
+Component* Actor::GetComponent(ComponentType type)
+{
+	for(Component*& component : components)
+	{
+		if(component->GetType() == type)
+			return component;
+	}
+	return nullptr;
+}

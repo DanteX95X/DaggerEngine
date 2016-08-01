@@ -1,9 +1,11 @@
 #include "clickable.h"
 #include <iostream>
+#include "movable.h"
 
 Clickable::Clickable(std::function<void()> functionInit)
 	: function{functionInit}
 {
+	type = ComponentType::CLICKABLE;
 }
 
 Component* Clickable::Clone()
@@ -21,6 +23,9 @@ void Clickable::HandleEvents(Actor& actor, SDL_Event& event)
 		Vector2 size = actor.GetSize();
 
 		if(x > position.x && x < position.x + size.x && y > position.y && y < position.y + size.y)
+		{
 			function();
+			static_cast<Movable*>(actor.GetComponent(ComponentType::MOVABLE))->ufoporno();
+		}
 	}
 }

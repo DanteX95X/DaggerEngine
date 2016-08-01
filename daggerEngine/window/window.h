@@ -20,6 +20,7 @@ public:
 
 	unsigned int GetWidth();
 	unsigned int GetHeight();
+	SDL_Window* GetWindow();
 
 private:
 	unsigned int width;
