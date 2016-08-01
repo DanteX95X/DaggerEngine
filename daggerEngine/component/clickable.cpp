@@ -26,6 +26,7 @@ void Clickable::HandleEvents(Actor& actor, SDL_Event& event)
 		{
 			function();
 			static_cast<Movable*>(actor.GetComponent(ComponentType::MOVABLE))->ufoporno();
+			//actor.GetScene()->GetSoundPlayer("boom_kick")->PlaySound(0);
 		}
 	}
 }

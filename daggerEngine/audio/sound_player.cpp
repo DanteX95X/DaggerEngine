@@ -4,7 +4,7 @@
 SoundPlayer::SoundPlayer(std::string soundPath)
 	:sound{Mix_LoadWAV(soundPath.c_str())}
 {
-	//sound = Mix_LoadWAV(soundPath.c_str());
+	sound = Mix_LoadWAV(soundPath.c_str());
 	assert(sound != nullptr);
 }
 SoundPlayer::SoundPlayer()

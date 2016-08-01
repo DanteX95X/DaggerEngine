@@ -6,6 +6,7 @@
 #include "scene/scene.h"
 #include "component/component.h"
 #include "utilities/vector2.h"
+#include "scene/scene.h"
 
 class Scene;
 class Component;
@@ -38,6 +39,7 @@ public:
 	void SetIsCollidable(bool isCollidable);
 
 	Component* GetComponent(ComponentType type);
+	Scene*& GetScene();
 private:
 	SDL_Texture* texture;
 	//SDL_Rect position;
@@ -49,6 +51,8 @@ private:
 	std::string actorName;
 	bool isVisible;
 	bool isCollidable;
+
+	Scene* scene;
 };
 
 #endif // ACTOR_H

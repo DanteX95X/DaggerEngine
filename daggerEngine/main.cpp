@@ -16,8 +16,10 @@ int main()
 	Scene scene(temp, "scene", {0,0});
 	ufo.push_back(scene);
 
+	SoundPlayer sound("sounds/boom_kick.wav");
+
 	Actor newActor(ufo[0], "crate", {0, 0}, {100, 100}, true, true);
-	newActor.AddComponent(new Clickable([]{std::cout << "button clicked\n";}));
+	newActor.AddComponent(new Clickable([&sound]{sound.PlaySound(0);}));
 	newActor.AddComponent(new Movable({100, 0}));
 	ufo[0].AddActor(newActor);
 
@@ -28,8 +30,6 @@ int main()
 	SDL_DisplayMode dm;
 	SDL_GetCurrentDisplayMode(0, &dm);
 	std::cout << dm.w << " " << dm.h << '\n';
-
-	//SoundPlayer ("boom_kick.wav");
 
 	while(!isDone)
 	{

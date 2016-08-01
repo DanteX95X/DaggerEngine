@@ -7,7 +7,6 @@ Scene::Scene(Window& window, std::string name, Vector2 cameraPositionInit)
 	:renderer{window.GetRenderer()}, sceneName{name}, cameraPosition{cameraPositionInit}, cameraSize{static_cast<double>(window.GetWidth()), static_cast<double>(window.GetHeight())}
 {
 		LoadTextures();
-		LoadSounds();
 		//LoadActors();
 }
 
@@ -42,27 +41,6 @@ void Scene::DestroyTextures()
 	for(std::pair<std::string, SDL_Texture*> pair : textures)
 		SDL_DestroyTexture(pair.second);
 }
-
-
-void Scene::LoadSounds()
-{
-//	DestroySounds();
-	std::ifstream soundList("scenes/" + sceneName + "_sounds");
-	std::cout << "scenes/" + sceneName + "_sounds\n\n";
-	std::string key, soundPath;
-
-	while(soundList >> key && soundList >> soundPath)
-	{
-		std::cout << "Loading sound\n \tkey: " << key << "\n \tpath: " << soundPath << "\n";
-		sounds[key] = SoundPlayer(soundPath);//Mix_LoadWAV(soundPath.c_str());
-	}
-}
-
-//void Scene::DestroySounds()
-//{
-//	for(std::pair<std::string, Mix_Chunk*> pair : sounds)
-//		Mix_FreeChunk(pair.second);
-//}
 
 //void Scene::LoadActors()
 //{
@@ -113,10 +91,7 @@ void Scene::AddActor(Actor& actor) {actors.push_back(actor);}
 void Scene::ReloadScene(SDL_Renderer* renderer)
 {
 	this->renderer = renderer;
-	//DestroyTextures();
-	//DestroySounds();
 	LoadTextures();
-	LoadSounds();
 	for(Actor& actor : actors)
 		actor.LoadTexture(*this);
 }

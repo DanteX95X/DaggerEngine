@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL_mixer.h>
 #include <string>
+#include "actor/actor.h"
 
 class SoundPlayer
 {
@@ -11,7 +12,7 @@ public:
 	SoundPlayer();
 	~SoundPlayer();
 
-	void PlaySound(int loops);
+	void PlaySound(int loops = 0);
 private:
 	Mix_Chunk* sound;
 };

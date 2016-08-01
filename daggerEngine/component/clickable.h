@@ -3,6 +3,7 @@
 
 #include "component.h"
 #include <functional>
+#include "audio/sound_player.h"
 
 class Clickable : public Component
 {
@@ -13,6 +14,7 @@ public:
 
 private:
 	std::function<void()> function;
+	SoundPlayer player;
 };
 
 #endif // BUTTON_H

@@ -2,14 +2,14 @@
 #include <iostream>
 
 Actor::Actor(Scene& parentScene, std::string name, Vector2 positionInit, Vector2 sizeInit, bool isVisibleInit, bool isCollidableInit)
-	:position{positionInit.x, positionInit.y}, size{sizeInit.x, sizeInit.y}, actorName{name}, isVisible{isVisibleInit}, isCollidable{isCollidableInit}
+	:position{positionInit.x, positionInit.y}, size{sizeInit.x, sizeInit.y}, actorName{name}, isVisible{isVisibleInit}, isCollidable{isCollidableInit}, scene{&parentScene}
 {
 	LoadTexture(parentScene);
 	assert(texture != nullptr);
 }
 
 Actor::Actor(const Actor& actor)
-	:texture{actor.texture}, position{actor.position}, size{actor.size}, actorName{actor.actorName}, isVisible{actor.isVisible}, isCollidable{actor.isCollidable}
+	:texture{actor.texture}, position{actor.position}, size{actor.size}, actorName{actor.actorName}, isVisible{actor.isVisible}, isCollidable{actor.isCollidable}, scene{actor.scene}
 {
 	for(Component* component : actor.components)
 		components.push_back(component->Clone());
@@ -66,3 +66,5 @@ Component* Actor::GetComponent(ComponentType type)
 	}
 	return nullptr;
 }
+
+Scene*& Actor::GetScene() { return scene; }
