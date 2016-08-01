@@ -2,6 +2,7 @@ TEMPLATE = app
 CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
+CONFIG += debug_and_release
 
 SOURCES += main.cpp \
     window/window.cpp \
