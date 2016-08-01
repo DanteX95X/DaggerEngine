@@ -3,6 +3,7 @@
 #include "component/clickable.h"
 #include "component/movable.h"
 #include "timer/timer.h"
+#include "audio/sound_player.h"
 
 using namespace std;
 
@@ -27,6 +28,8 @@ int main()
 	SDL_DisplayMode dm;
 	SDL_GetCurrentDisplayMode(0, &dm);
 	std::cout << dm.w << " " << dm.h << '\n';
+
+	//SoundPlayer ("boom_kick.wav");
 
 	while(!isDone)
 	{

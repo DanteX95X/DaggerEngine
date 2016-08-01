@@ -55,7 +55,7 @@ void Actor::HandleCollision(Actor& collider)
 		Component->HandleCollision(collider);
 }
 
-void Actor::AddComponent(Component* component) {components.push_back(component);}
+void Actor::AddComponent(Component* component) { components.push_back(component); }
 
 Component* Actor::GetComponent(ComponentType type)
 {

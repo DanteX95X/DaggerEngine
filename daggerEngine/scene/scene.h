@@ -10,6 +10,7 @@
 #include <assert.h>
 #include <fstream>
 #include "utilities/vector2.h"
+#include "audio/sound_player.h"
 
 class Window;
 class Actor;
@@ -36,13 +37,16 @@ private:
 
 	std::vector<Actor> actors;
 	std::unordered_map<std::string, SDL_Texture*> textures;
+	std::unordered_map<std::string, SoundPlayer> sounds;
 
 	Vector2	cameraPosition;
 	Vector2 cameraSize;
 
-	void CreateTextures();
+	void LoadTextures();
 	void DestroyTextures();
-	void CreateActors();
+	void LoadSounds();
+	void DestroySounds();
+	void LoadActors();
 };
 
 #endif // SCENE_H

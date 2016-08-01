@@ -4,6 +4,7 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 #include "scene/scene.h"
 
 class Scene;
@@ -32,10 +33,11 @@ private:
 
 	Scene* currentScene;
 
-	bool InitializeSDL();
-	bool InitializeIMG();
-	bool CreateWindow(unsigned int width, unsigned int height, std::string title, Uint32 flags);
-	bool CreateRenderer();
+	void InitializeSDL();
+	void InitializeIMG();
+	void InitializeMixer();
+	void CreateWindow(unsigned int width, unsigned int height, std::string title, Uint32 flags);
+	void CreateRenderer();
 };
 
 #endif // WINDOW_H
