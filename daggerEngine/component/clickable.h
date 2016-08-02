@@ -14,7 +14,6 @@ public:
 
 private:
 	std::function<void()> function;
-	SoundPlayer player;
 };
 
 #endif // BUTTON_H

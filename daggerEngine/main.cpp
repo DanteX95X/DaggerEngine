@@ -4,6 +4,7 @@
 #include "component/movable.h"
 #include "timer/timer.h"
 #include "audio/sound_player.h"
+#include "audio/music_player.h"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ int main()
 	ufo.push_back(scene);
 
 	SoundPlayer sound("sounds/boom_kick.wav");
+	MusicPlayer music("sounds/Nasty_Creatures.mp3");
 
 	Actor newActor(ufo[0], "crate", {0, 0}, {100, 100}, true, true);
 	newActor.AddComponent(new Clickable([&sound]{sound.PlaySound(0);}));
@@ -31,6 +33,7 @@ int main()
 	SDL_GetCurrentDisplayMode(0, &dm);
 	std::cout << dm.w << " " << dm.h << '\n';
 
+	music.PlayMusic();
 	while(!isDone)
 	{
 		while(SDL_PollEvent(&event))
@@ -38,6 +41,7 @@ int main()
 			if(event.type == SDL_QUIT)
 				isDone = true;
 			if(event.type == SDL_KEYDOWN)
+			{
 				if(event.key.keysym.sym == SDLK_RETURN)
 				{
 					temp.SetUpWindow(dm.w, dm.h, "new window");
@@ -45,6 +49,14 @@ int main()
 						scene.ReloadScene(temp.GetRenderer());
 					SDL_SetWindowFullscreen(temp.GetWindow(), SDL_WINDOW_FULLSCREEN);
 				}
+				else if(event.key.keysym.sym == SDLK_p)
+				{
+					if(music.IsPlaying())
+						music.PauseMusic();
+					else
+						music.PlayMusic();
+				}
+			}
 			ufo[0].HandleEvents(event);
 		}
 		Timer::Instance().Update();

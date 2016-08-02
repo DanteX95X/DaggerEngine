@@ -13,7 +13,8 @@ SOURCES += main.cpp \
     timer/timer.cpp \
     utilities/vector2.cpp \
     utilities/collisionDetection.cpp \
-    audio/sound_player.cpp
+    audio/sound_player.cpp \
+    audio/music_player.cpp
 
 
 QMAKE_CXXFLAGS += -std=c++11
@@ -31,5 +32,6 @@ HEADERS += \
     timer/timer.h \
     utilities/vector2.h \
     utilities/collisionDetection.h \
-    audio/sound_player.h
+    audio/sound_player.h \
+    audio/music_player.h
 

@@ -9,7 +9,6 @@ class SoundPlayer
 {
 public:
 	SoundPlayer(std::string soundPath);
-	SoundPlayer();
 	~SoundPlayer();
 
 	void PlaySound(int loops = 0);
